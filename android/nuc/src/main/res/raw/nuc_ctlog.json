@@ -1,0 +1,174 @@
+{
+  "log_list_timestamp": "2022-12-21T22:00:12Z",
+  "operators": [
+      {
+          "email": [
+              "ct-logs@yandex-team.ru"
+          ],
+          "logs": [
+              {
+                  "description": "Yandex Agate-2022 log",
+                  "key": "MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEJS/ONg5e4XOlh/hRbXwPIY6lcAcVdWcvMiVQ+o7r7JqvYlifXQbunZOshPo9D22wa5haIjUjWS4Xpi8auewVpw==",
+                  "log_id": "qvDwbBTxANU/Wtd9zaAe7b5Mjf6SSyMOi7iSTvywv+w=",
+                  "mmd": 86400,
+                  "state": {
+                      "usable": {
+                          "timestamp": "2022-03-20T18:38:01Z"
+                      }
+                  },
+                  "temporal_interval": {
+                      "end_exclusive": "2023-02-01T00:00:00Z",
+                      "start_inclusive": "2022-01-01T00:00:00Z"
+                  },
+                  "url": "https://ct-agate.yandex.net/2022/"
+              },
+              {
+                  "description": "Yandex Agate-2023 log",
+                  "key": "MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEhxjLY9zBQZk5VmyjKd/Ej6KfBLNE2OKnd+LdyXIsa1kPkXqyVlLWEfQE7bYSZOt2UXYscRsVFOyqxwGYU0yjBw==",
+                  "log_id": "3q1pSgrz1CuGgkHUXu8FY/vPalFD4txiGoRf6J9Qm90=",
+                  "mmd": 86400,
+                  "state": {
+                      "usable": {
+                          "timestamp": "2022-03-20T18:38:01Z"
+                      }
+                  },
+                  "temporal_interval": {
+                      "end_exclusive": "2024-02-01T00:00:00Z",
+                      "start_inclusive": "2023-01-01T00:00:00Z"
+                  },
+                  "url": "https://ct-agate.yandex.net/2023/"
+              },
+              {
+                  "description": "Yandex Agate-2024 log",
+                  "key": "MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEZf3JmDiqxpMZO3Rw3ngtmd2uSlGdMpLtNEVjmXKrXSEtIl4L7n3gCHq/+upBALiMalQP1E47Epx0qFGXELA5lQ==",
+                  "log_id": "lbNyiSAplLRaDFkkJKRZIP0UsSRnxHSLZzoD4BJVM9c=",
+                  "mmd": 86400,
+                  "state": {
+                      "usable": {
+                          "timestamp": "2022-11-18T17:00:00Z"
+                      }
+                  },
+                  "temporal_interval": {
+                      "end_exclusive": "2025-01-01T00:00:00Z",
+                      "start_inclusive": "2024-01-01T00:00:00Z"
+                  },
+                  "url": "https://ct-agate.yandex.net/2024/"
+              }
+          ],
+          "name": "Yandex"
+      },
+      {
+          "email": [
+              "ctlog@vk.company"
+          ],
+          "logs": [
+              {
+                  "description": "VK 'NCA2022' Log",
+                  "key": "MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAELmgV+HQuvMs7MYKD1QS+Z9A8Jq72ORb0KicXDbtPozC8q3L/q4Nz93BZdVEYooY8gvGVExhwuaWvWEN7KE57FA==",
+                  "log_id": "iG1OOMYisXO8V9x20cax62WBMNFdStLmH2drD13U+HY=",
+                  "mmd": 86400,
+                  "state": {
+                      "usable": {
+                          "timestamp": "2022-03-25T12:13:00Z"
+                      }
+                  },
+                  "temporal_interval": {
+                      "end_exclusive": "2023-01-01T00:00:00Z",
+                      "start_inclusive": "2022-01-01T00:00:00Z"
+                  },
+                  "url": "https://ctlog.mail.ru/nca/"
+              },
+              {
+                  "description": "VK 'NCA2023' Log",
+                  "key": "MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEUidX4EB6GdgGoQC0u1VOokaLh7cfN66CTZ/zLc9brtppE9LNNyRZ9MXl+YTqQ/YxNi/CkXfbV9xMC4tVKN//ng==",
+                  "log_id": "6ZZ4aoGLsN0Eju61DrPM1QW9JU7I9VhOrVAlCgoEyNU=",
+                  "mmd": 86400,
+                  "state": {
+                      "usable": {
+                          "timestamp": "2022-03-25T12:13:00Z"
+                      }
+                  },
+                  "temporal_interval": {
+                      "end_exclusive": "2024-01-01T00:00:00Z",
+                      "start_inclusive": "2023-01-01T00:00:00Z"
+                  },
+                  "url": "https://ctlog2023.mail.ru/nca2023/"
+              },
+              {
+                  "description": "VK 'NCA2024' Log",
+                  "key": "MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAExq6Wp2YmLNAhaM5DkoPr0K6Xa7mX9cq0rm87NGX26BtpUMimgwuWBLFm0ImD2dgO7JdZJJg6T9qG9EqOWg1o2g==",
+                  "log_id": "rDw/UOE3a7Y0dFbd8Tuykdn+zHtt8vEjum/yqNS5okI=",
+                  "mmd": 86400,
+                  "state": {
+                      "usable": {
+                          "timestamp": "2022-03-25T12:13:00Z"
+                      }
+                  },
+                  "temporal_interval": {
+                      "end_exclusive": "2025-01-01T00:00:00Z",
+                      "start_inclusive": "2024-01-01T00:00:00Z"
+                  },
+                  "url": "https://ctlog2024.mail.ru/nca2024/"
+              }
+          ],
+          "name": "VK LLC"
+      },
+      {
+          "email": [
+              "ct-log@digital.gov.ru"
+          ],
+          "logs": [
+              {
+                  "description": "The Ministry of Digital Development and Communications '2022' Log",
+                  "key": "MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAED4aGWcGIbBub2XkLIP+mC/qB5GyXAcfPUpXmmdUGQTjZnsk26LAWoreF4TauEY5jfzFn07AFWAadNvZG/fGkUA==",
+                  "log_id": "NTQ3MDMyMzYzOTEwMDQzMzI0",
+                  "mmd": 86400,
+                  "state": {
+                      "usable": {
+                          "timestamp": "2022-04-08T10:16:55Z"
+                      }
+                  },
+                  "temporal_interval": {
+                      "end_exclusive": "2023-01-01T00:00:00Z",
+                      "start_inclusive": "2022-01-01T00:00:00Z"
+                  },
+                  "url": "https://22.ctlog.digital.gov.ru/2022/"
+              },
+              {
+                  "description": "The Ministry of Digital Development and Communications '2023' Log",
+                  "key": "MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEMrvKMpGZgzS8GWcmVZmTCTc353lZmlF2bT6RxCNvtaVX0Pk5zKqJaS8YUuV+9XhVAJ1EiXh1LoHnyGJTi3GslQ==",
+                  "log_id": "NDMxNjYzMDU1NTczNDI2MzE1Mg==",
+                  "mmd": 86400,
+                  "state": {
+                      "usable": {
+                          "timestamp": "2022-04-08T20:32:06Z"
+                      }
+                  },
+                  "temporal_interval": {
+                      "end_exclusive": "2024-01-01T00:00:00Z",
+                      "start_inclusive": "2023-01-01T00:00:00Z"
+                  },
+                  "url": "https://23.ctlog.digital.gov.ru/2023/"
+              },
+              {
+                  "description": "The Ministry of Digital Development and Communications '2024' Log",
+                  "key": "MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAESsbeAkQGAsByPKpOK4RI7pV39N/Z9DtJ4VCG06iyLgWipPDUnjKQPhiF/l6juQS0k1lFNCGTJuH0GjqM806fLQ==",
+                  "log_id": "NTE4NTQwMzk3NDQzMjA2NTc5Ng==",
+                  "mmd": 86400,
+                  "state": {
+                      "usable": {
+                          "timestamp": "2022-12-16T20:32:06Z"
+                      }
+                  },
+                  "temporal_interval": {
+                      "end_exclusive": "2025-01-01T00:00:00Z",
+                      "start_inclusive": "2024-01-01T00:00:00Z"
+                  },
+                  "url": "https://24.ctlog.digital.gov.ru/2024/"
+            }
+          ],
+          "name": "The Ministry of Digital Development and Communications"
+      }
+  ],
+  "version": "1.43"
+}

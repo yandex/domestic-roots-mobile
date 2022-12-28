@@ -1,0 +1,15 @@
+Interceptor networkInterceptor = new CTInterceptorBuilder()
+{{#excludeHosts}}
+        .excludeHost("{{.}}")
+{{/excludeHosts}}
+{{#includeHosts}}
+        .includeHost("{{.}}")
+{{/includeHosts}}
+{{^failOnError}}
+        .setFailOnError(false)
+{{/failOnError}}
+        .build();
+
+OkHttpClient client = new OkHttpClient.Builder()
+        .addNetworkInterceptor(networkInterceptor)
+        .build();

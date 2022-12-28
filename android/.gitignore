@@ -1,0 +1,23 @@
+# Android
+local.properties
+
+# Gradle
+.gradle/
+build/
+
+# IDEA/Android Studio ignores
+*.iml
+*.ipr
+*.iws
+**/.idea/
+
+# Sublime
+.tags
+*.sublime-project
+*.sublime-workspace
+
+# Jacoco
+**/jacoco.exec
+
+# MacOS
+.DS_Store

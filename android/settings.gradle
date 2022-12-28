@@ -1,0 +1,9 @@
+include ':webview'
+include ':demo'
+include ':nuc'
+
+include ':certificatetransparency'
+project(':certificatetransparency').projectDir = new File('certificatetransparency/certificatetransparency')
+
+include ':certificatetransparency-android'
+project(':certificatetransparency-android').projectDir = new File('certificatetransparency/certificatetransparency-android')

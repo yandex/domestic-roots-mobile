@@ -1,0 +1,33 @@
+private void enableCertificateTransparencyChecks(HttpURLConnection connection) {
+    if (connection instanceof HttpsURLConnection) {
+        HttpsURLConnection httpsConnection = (HttpsURLConnection) connection;
+
+        // Create a hostname verifier wrapping the original
+        HostnameVerifier verifier = new CTHostnameVerifierBuilder(httpsConnection.getHostnameVerifier())
+{{#excludeHosts}}
+                .excludeHost("{{.}}")
+{{/excludeHosts}}
+{{#includeHosts}}
+                .includeHost("{{.}}")
+{{/includeHosts}}
+{{^failOnError}}
+                .setFailOnError(false)
+{{/failOnError}}
+                .build();
+
+        httpsConnection.setHostnameVerifier(verifier);
+    }
+}
+
+RequestQueue queue = Volley.newRequestQueue(applicationContext,
+        new HurlStack() {
+            @Override
+            protected HttpURLConnection createConnection(URL url) throws IOException {
+                HttpURLConnection connection = super.createConnection(url);
+
+                enableCertificateTransparencyChecks(connection);
+
+                return connection;
+            }
+        }
+);
