@@ -99,6 +99,14 @@ struct VerifyVisitor {
 
 @implementation CertificateTransparencyConfiguration
 
+- (instancetype)init {
+  self = [super init];
+  if (self) {
+    _autoUpdate = YES;
+  }
+  return self;
+}
+
 @end
 
 @interface CertificateTransparency () {

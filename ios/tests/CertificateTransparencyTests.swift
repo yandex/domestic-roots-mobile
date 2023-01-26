@@ -5,7 +5,7 @@ import CertificateTransparency
 
 final class CertificateTransparencyTests: XCTestCase {
   func testHasValidTimestamps() {
-    let ct = CertificateTransparency()
+    let ct = makeCertificateTransparency()
     let trust = CreateValidTimestamps() as! SecTrust
     let result = ct.verifyTrust(trust)
     XCTAssertTrue(result.trusted)
@@ -13,10 +13,16 @@ final class CertificateTransparencyTests: XCTestCase {
   }
 
   func testNoTimestamps() {
-    let ct = CertificateTransparency()
+    let ct = makeCertificateTransparency()
     let trust = CreateNoTimestamps() as! SecTrust
     let result = ct.verifyTrust(trust)
     XCTAssertFalse(result.trusted)
     XCTAssertTrue(result.hasCustomRoot)
   }
+}
+
+private func makeCertificateTransparency() -> CertificateTransparency {
+  let configuration = CertificateTransparencyConfiguration()
+  configuration.autoUpdate = false
+  return CertificateTransparency(configuration: configuration)
 }

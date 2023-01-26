@@ -7,7 +7,7 @@ URLSession/WKWebView don't apply certificate transparency checks when verifying 
 ## Configuration
 
 Library can be configured with `CertificateTransparencyConfiguration` object:
-1. `autoUpdate`: Automatically update list of CertificateTransparency logs (CT logs) from a server. `false` by default.
+1. `autoUpdate`: Automatically update list of CertificateTransparency logs (CT logs) from a server. `true` by default.
 2. `updateURL`: URL where CT logs are stored. Takes effect only if `autoUpdate = true`. By default the logs will be downloaded from  https://browser-resources.s3.yandex.net/ctlog/ctlog.json
 3. `customRoots`: A list of custom trust anchors. By default it contains 'Russian Trusted Root CA'
 4. `logs`: A list of CT logs to perform checks. Takes effect only if `autoUpdate = false`. By default it contains a snapshot from https://browser-resources.s3.yandex.net/ctlog/ctlog.json

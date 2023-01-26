@@ -26,6 +26,8 @@ CERTIFICATE_TRANSPARENCY_EXPORT
 @property(nonatomic, copy, nullable) NSArray* customRoots;
 @property(nonatomic, copy, nullable) NSArray<NSData*>* logs;
 
+- (instancetype)init NS_DESIGNATED_INITIALIZER;
+
 @end
 
 CERTIFICATE_TRANSPARENCY_EXPORT
