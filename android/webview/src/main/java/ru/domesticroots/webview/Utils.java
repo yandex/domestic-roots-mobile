@@ -1,9 +1,13 @@
 package ru.domesticroots.webview;
 
 import android.annotation.SuppressLint;
+import android.net.http.SslCertificate;
+import android.os.Build;
 
+import androidx.annotation.DoNotInline;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
@@ -152,6 +156,31 @@ public class Utils {
             return sslContext.getSocketFactory();
         } catch (NoSuchAlgorithmException | KeyManagementException e) {
             throw new RuntimeException(e);
+        }
+    }
+
+    @Nullable
+    public static X509Certificate getX509Certificate(SslCertificate sslCertificate)
+            throws CertificateException {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            return Api29Impl.getX509Certificate(sslCertificate);
+        } else {
+            return getX509CertificateFromSavedState(sslCertificate);
+        }
+    }
+
+    private static X509Certificate getX509CertificateFromSavedState(SslCertificate sslCertificate)
+            throws CertificateException {
+        byte[] x509Encoded = SslCertificate.saveState(sslCertificate)
+                .getByteArray("x509-certificate"); //SslCertificate.X509_CERTIFICATE
+        return extractCertificateFromBytes(x509Encoded);
+    }
+
+    @RequiresApi(Build.VERSION_CODES.Q)
+    private static class Api29Impl {
+        @DoNotInline
+        public static X509Certificate getX509Certificate(SslCertificate sslCertificate) {
+            return sslCertificate.getX509Certificate();
         }
     }
 

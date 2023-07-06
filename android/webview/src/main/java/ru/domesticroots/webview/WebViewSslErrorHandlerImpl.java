@@ -35,28 +35,28 @@ public class WebViewSslErrorHandlerImpl implements WebViewSslErrorHandler {
         }
         String url = UriUtils.remotePathAndParams(error.getUrl());
 
-        if (certificateCheckCache.containsSuccessful(url)) {
-            callback.onProceeded();
-            return true;
-        } else if (certificateCheckCache.containsFailed(url)) {
-            callback.onCanceled();
-            return true;
-        }
-
-        downloadAndCheckServerCertificates(url, certificatesProvider.provide(),
+        downloadAndCheckServerCertificates(url, error, certificatesProvider.provide(),
                 ctLogDataSource, callback, certificateCheckCache, logger);
         return true;
     }
 
     private void downloadAndCheckServerCertificates(
             @NonNull String url,
+            @NonNull SslError sslError,
             @NonNull byte[][] certificates,
             @NonNull CTLogDataSource ctLogDataSource,
             @NonNull Callback callback,
             @NonNull CertificateCheckCache certificateCheckCache,
             @NonNull Logger logger
     ) {
-        new DownloadCertsAndCheckTask(context, url, certificates, ctLogDataSource, certificateCheckCache, callback, logger)
-                .executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+        new DownloadCertsAndCheckTask(context,
+                sslError,
+                url,
+                certificates,
+                ctLogDataSource,
+                certificateCheckCache,
+                callback,
+                logger
+        ).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
     }
 }

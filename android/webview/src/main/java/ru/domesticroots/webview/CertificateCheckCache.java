@@ -3,34 +3,35 @@ package ru.domesticroots.webview;
 import androidx.annotation.AnyThread;
 import androidx.annotation.NonNull;
 
+import java.security.cert.X509Certificate;
+import java.util.HashSet;
 import java.util.Set;
-import java.util.concurrent.ConcurrentSkipListSet;
 
 @AnyThread
 class CertificateCheckCache {
 
     @NonNull
-    private final Set<String> cacheWithSuccessfulChecks = new ConcurrentSkipListSet<>();
+    private final Set<X509Certificate> cacheWithSuccessfulChecks = new HashSet<>();
 
     @NonNull
-    private final Set<String> cacheWithFailedChecks = new ConcurrentSkipListSet<>();
+    private final Set<X509Certificate> cacheWithFailedChecks = new HashSet<>();
 
     CertificateCheckCache(){}
 
-    void addSuccessful(@NonNull String url) {
-        cacheWithSuccessfulChecks.add(url);
+    synchronized void addSuccessful(@NonNull X509Certificate certificate) {
+        cacheWithSuccessfulChecks.add(certificate);
     }
 
-    void addFailed(@NonNull String url) {
-        cacheWithFailedChecks.add(url);
+    synchronized void addFailed(@NonNull X509Certificate certificate) {
+        cacheWithFailedChecks.add(certificate);
     }
 
-    boolean containsSuccessful(@NonNull String url) {
-        return cacheWithSuccessfulChecks.contains(url);
+    synchronized boolean containsSuccessful(@NonNull X509Certificate certificate) {
+        return cacheWithSuccessfulChecks.contains(certificate);
     }
 
-    boolean containsFailed(@NonNull String url) {
-        return cacheWithFailedChecks.contains(url);
+    synchronized boolean containsFailed(@NonNull X509Certificate certificate) {
+        return cacheWithFailedChecks.contains(certificate);
     }
 
 }

@@ -2,6 +2,7 @@ package ru.domesticroots.webview;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.net.http.SslError;
 import android.os.AsyncTask;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -28,6 +29,8 @@ class DownloadCertsAndCheckTask extends AsyncTask<Void, Void, Boolean> {
     @NonNull
     private final Context context;
     @NonNull
+    private final SslError originalError;
+    @NonNull
     private final String url;
     @NonNull
     private final byte[][] certificates;
@@ -42,6 +45,7 @@ class DownloadCertsAndCheckTask extends AsyncTask<Void, Void, Boolean> {
 
     @SuppressWarnings("deprecation")
     DownloadCertsAndCheckTask(@NonNull Context context,
+                              @NonNull SslError originalError,
                               @NonNull String url,
                               @NonNull byte[][] certificates,
                               @NonNull CTLogDataSource ctLogDataSource,
@@ -49,6 +53,7 @@ class DownloadCertsAndCheckTask extends AsyncTask<Void, Void, Boolean> {
                               @NonNull WebViewSslErrorHandler.Callback callback,
                               @NonNull Logger logger) {
         this.context = context.getApplicationContext();
+        this.originalError = originalError;
         this.url = url;
         this.certificates = certificates;
         this.ctLogDataSource = ctLogDataSource;
@@ -59,14 +64,38 @@ class DownloadCertsAndCheckTask extends AsyncTask<Void, Void, Boolean> {
 
     @Override
     protected Boolean doInBackground(Void... voids) {
+        X509Certificate certificateFromOriginalError;
+        try {
+            certificateFromOriginalError = Utils.getX509Certificate(originalError.getCertificate());
+        } catch (CertificateException e) {
+            logger.e("Failed to extract X509 certificate from original SslError", e);
+            return false;
+        }
+        if (certificateFromOriginalError == null) {
+            logger.e("Extracted certificate from SslError is null");
+            return false;
+        }
+        if (certificateCheckCache.containsSuccessful(certificateFromOriginalError)) {
+            return true;
+        } else if (certificateCheckCache.containsFailed(certificateFromOriginalError)) {
+            return false;
+        }
         Certificate[] chain = connectAndGetServerCertificates(url);
         if (chain == null || chain.length == 0) {
+            logger.e("Empty certificate chain");
             return false;
         }
         X509Certificate[] x509Chain = Utils.getX509Chain(chain);
         if (x509Chain.length != chain.length) {
             logger.e(String.format("Illegal certificate transformation. " +
                     "Was %s, but found %s", chain.length, x509Chain.length));
+            return false;
+        }
+
+        X509Certificate leafCertificate = x509Chain[0];
+        if (!leafCertificate.equals(certificateFromOriginalError)) {
+            logger.e("Found a mismatch between the leaf certificate in the chain " +
+                    "and the certificate from the original SSLError.");
             return false;
         }
 
@@ -91,11 +120,11 @@ class DownloadCertsAndCheckTask extends AsyncTask<Void, Void, Boolean> {
         try {
             trustManager.checkServerTrusted(x509Chain, "RSA");
 
-            certificateCheckCache.addSuccessful(url);
+            certificateCheckCache.addSuccessful(certificateFromOriginalError);
             return true;
         } catch (CertificateException e) {
             logger.e("Failed to verify certificate chain", e);
-            certificateCheckCache.addFailed(url);
+            certificateCheckCache.addFailed(certificateFromOriginalError);
         }
 
         return false;
