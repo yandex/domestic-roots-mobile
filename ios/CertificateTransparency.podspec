@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name                   = 'CertificateTransparency'
-  s.version                = '0.0.7'
+  s.version                = '0.0.10'
   s.summary                = 'Certificate Transparency support for custom root CA in SecTrust evaluation'
   s.homepage               = "https://github.com/yandex/domestic-roots-mobile/tree/main/ios"
   s.author                 = { "Sergey Kuznetsov" => "kuznetsovs@yandex-team.ru" }
@@ -8,7 +8,7 @@ Pod::Spec.new do |s|
   s.license                = 'MIT'
   s.swift_version          = '5'
   s.requires_arc           = true
-  s.ios.deployment_target  = '10.0'
+  s.ios.deployment_target  = '11.0'
   s.prefix_header_file     = false
   s.frameworks             = 'Security'
   s.libraries              = 'c++'
