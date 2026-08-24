@@ -2,6 +2,7 @@ import Security
 import XCTest
 
 import CertificateTransparency
+import CertificateTransparencyTestSupport
 
 final class CertificateTransparencyTests: XCTestCase {
   func testHasValidTimestamps() {

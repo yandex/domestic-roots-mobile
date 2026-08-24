@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name                   = 'CertificateTransparency'
-  s.version                = '0.0.10'
+  s.version                = '0.0.19'
   s.summary                = 'Certificate Transparency support for custom root CA in SecTrust evaluation'
   s.homepage               = "https://github.com/yandex/domestic-roots-mobile/tree/main/ios"
   s.author                 = { "Sergey Kuznetsov" => "kuznetsovs@yandex-team.ru" }
@@ -40,6 +40,7 @@ Pod::Spec.new do |s|
     'auto_update_log_verifier.h',
     'auto_update_log_verifier.mm',
     'builtin_logs.cc',
+    'builtin_logs-inc.h',
     'builtin_logs.h',
     'builtin_root_certs.h',
     'builtin_root_certs.mm',

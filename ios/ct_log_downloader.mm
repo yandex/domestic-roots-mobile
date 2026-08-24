@@ -10,7 +10,7 @@ namespace {
 NSString* GetUserAgent() {
   NSString* version =
       [NSString stringWithUTF8String:CERTIFICATE_TRANSPARENCY_VERSION];
-  return [@"CertificateTransparency/" stringByAppendingString:version];
+  return [@"CertificateTransparencyPublic/" stringByAppendingString:version];
 }
 
 NSString* ToNSString(const std::string& str) {

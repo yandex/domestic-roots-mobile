@@ -1,0 +1,4 @@
+module CertificateTransparencyTestSupport {
+    header "../test_certs.h"
+    export *
+}
