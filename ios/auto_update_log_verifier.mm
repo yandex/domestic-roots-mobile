@@ -12,7 +12,7 @@ namespace certificate_transparency {
 namespace {
 
 constexpr std::chrono::duration<double> kInitialDelay = std::chrono::seconds(2);
-constexpr std::chrono::seconds kSucceedUpdateInterval = std::chrono::hours(24);
+constexpr std::chrono::seconds kSucceedUpdateInterval = std::chrono::days(30);
 constexpr std::chrono::seconds kFailedUpdateInterval = std::chrono::hours(1);
 
 NSString* const kNextUpdate = @"next_update";

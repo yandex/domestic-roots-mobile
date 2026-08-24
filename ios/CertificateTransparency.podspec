@@ -27,7 +27,7 @@ Pod::Spec.new do |s|
     '-ftrivial-auto-var-init=pattern',
     '-fvisibility-inlines-hidden',
     '-fvisibility=hidden',
-    '-std=c++17',
+    '-std=c++20',
     '-Wno-documentation-deprecated-sync',
     '-Wno-shorten-64-to-32',
   ]
